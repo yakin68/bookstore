@@ -10,5 +10,5 @@ usermod -a -G docker ec2-user
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-$(uname -s)-$(uname -m)" \
 -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-cd /home/ec2-user && git clone https://github.com/eakkaya64/bookstore-api.git
+cd /home/ec2-user && git clone https://github.com/yakin68/bookstore.git
 cd /home/ec2-user/bookstore-api && docker-compose up

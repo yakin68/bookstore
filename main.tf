@@ -67,7 +67,7 @@ resource "aws_security_group" "allow_ssh" {
 resource "aws_instance" "tf-ec2" {
   ami           = data.aws_ami.al2023.id
   instance_type = var.instance-type
-  key_name = "end-key-pair"
+  key_name = "end-key"
   vpc_security_group_ids = [ aws_security_group.allow_ssh.id ]
   user_data = filebase64("user-data.sh")
       tags = {
