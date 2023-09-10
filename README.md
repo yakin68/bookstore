@@ -140,3 +140,5 @@ Bookstore Web API Application aims to create a bookstore web service using Docke
 - [Terraform AWS Provider Documentaion](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
 - [AWS Cloudformation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) (Optional)
+# Alpine Linux kullanıyorsanız
+apk add iputils (ile ping atanilirsiniz.)
