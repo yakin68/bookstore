@@ -33,7 +33,7 @@ data "aws_ami" "al2023" {
 }
 
 variable "secgr-dynamic-ports" {
-  default = [22,80,443]
+  default = [22,80,443,3306]
 }
 
 variable "instance-type" {
