@@ -41,8 +41,8 @@ variable "instance-type" {
   sensitive = true
 }
 
-resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh"
+resource "aws_security_group" "allow_ssh2" {
+  name        = "allow_ssh2"
   description = "Allow SSH inbound traffic"
 
   dynamic "ingress" {
@@ -67,8 +67,8 @@ resource "aws_security_group" "allow_ssh" {
 resource "aws_instance" "tf-ec2" {
   ami           = data.aws_ami.al2023.id
   instance_type = var.instance-type
-  key_name = "end-key"
-  vpc_security_group_ids = [ aws_security_group.allow_ssh.id ]
+  key_name = "end-key-pair"
+  vpc_security_group_ids = [ aws_security_group.allow_ssh2.id ]
   user_data = filebase64("user-data.sh")
       tags = {
       Name = "Web Server of Bookstore"
@@ -76,4 +76,7 @@ resource "aws_instance" "tf-ec2" {
 }  
 output "myec2-public-ip" {
   value = aws_instance.tf-ec2.public_ip
+}
+output "ssh-connection-command" {
+  value = "ssh -i ${aws_instance.tf-ec2.key_name}.pem ec2-user@${aws_instance.tf-ec2.public_ip}"
 }
